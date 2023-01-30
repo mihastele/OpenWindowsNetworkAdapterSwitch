@@ -2,6 +2,4 @@
 
 Simple application GUI to enable and disable the network cards. The motivation for this application was that I am too lazy to open the network manager and disable the network adapter when trying to focus on a task without distractions (Deep Work). So I implemented a binary shortcut to open this for me.
 
-#### THE APPLICATION HAS TO BE RUN AS ADMINISTRATOR IN ORDER TO WORK PROPERLY!
-
 ![alt text](https://raw.githubusercontent.com/mihastele/OpenWindowsNetworkAdapterSwitch/main/NetworkSwitch/IMAGE.png)
