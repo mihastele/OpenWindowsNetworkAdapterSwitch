@@ -56,9 +56,10 @@
             this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
             this.checkBox1.Location = new System.Drawing.Point(12, 80);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(214, 24);
+            this.checkBox1.Size = new System.Drawing.Size(214, 36);
             this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "checkBox1";
+            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -66,7 +67,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(238, 125);
+            this.ClientSize = new System.Drawing.Size(238, 135);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
@@ -81,5 +82,6 @@
         private Label label1;
         private ComboBox comboBox1;
         private CheckBox checkBox1;
+        private Button button1;
     }
 }

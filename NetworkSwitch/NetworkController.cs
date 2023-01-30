@@ -26,6 +26,8 @@ namespace NetworkSwitch
                 {
                     task = Task.Factory.StartNew(() => DisableAdapter(networkInterfaceName));
                 }
+
+                task.Wait();
                 // TaskOne.Wait();
             }
             catch (Exception e)
