@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Diagnostics;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 
 namespace NetworkSwitch
@@ -9,7 +10,7 @@ namespace NetworkSwitch
     internal class NetworkController
     {
 
-        public void Switch(String name, bool enabled)
+        public static void Switch(String name, bool enabled)
         {
             string networkInterfaceName = "";
 
@@ -46,7 +47,7 @@ namespace NetworkSwitch
         }
 
 
-        public void ResetAndReenable(String name)
+        public static void ResetAndReenable(String name)
         {
             string networkInterfaceName = "";
 
@@ -93,6 +94,52 @@ namespace NetworkSwitch
             Process p = new Process();
             p.StartInfo = psi;
             p.Start();
+        }
+
+        public static void ShowInterfaceSummary()
+        {
+
+            NetworkInterface[] interfaces = NetworkInterface.GetAllNetworkInterfaces();
+            foreach (NetworkInterface adapter in interfaces)
+            {
+                Console.WriteLine("Name: {0}", adapter.Name);
+                Console.WriteLine(adapter.Description);
+                Console.WriteLine(String.Empty.PadLeft(adapter.Description.Length, '='));
+                Console.WriteLine("  Interface type .......................... : {0}", adapter.NetworkInterfaceType);
+                Console.WriteLine("  Operational status ...................... : {0}",
+                    adapter.OperationalStatus);
+                string versions = "";
+
+                // Create a display string for the supported IP versions.
+                if (adapter.Supports(NetworkInterfaceComponent.IPv4))
+                {
+                    versions = "IPv4";
+                }
+                if (adapter.Supports(NetworkInterfaceComponent.IPv6))
+                {
+                    if (versions.Length > 0)
+                    {
+                        versions += " ";
+                    }
+                    versions += "IPv6";
+                }
+                Console.WriteLine("  IP version .............................. : {0}", versions);
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+        }
+
+        public static NetworkInterface getNetworkInterface(String name)
+        {
+            NetworkInterface nt = NetworkInterface.GetAllNetworkInterfaces().Where(inName => name == inName.Name).First();
+            // Console.WriteLine(nt.Name + " Was selected");
+            return nt;
+        }
+
+        public static bool isNetworkAdapterEnabled(String name)
+        {
+            NetworkInterface nc = NetworkController.getNetworkInterface(name);
+            return nc.OperationalStatus == OperationalStatus.Up;
         }
     }
 }
