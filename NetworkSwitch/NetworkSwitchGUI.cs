@@ -43,7 +43,7 @@ namespace NetworkSwitch
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // NetworkInterface nc = NetworkController.getNetworkInterface(adapters[comboBox1.SelectedIndex]);
+            // NetworkInterface nc = NetworkController.GetNetworkInterface(adapters[comboBox1.SelectedIndex]);
             // checkBox1.Text = nc.OperationalStatus.ToString();
             this.UpdateCheckBoxStateOnSelectAdapter();
         }
@@ -61,7 +61,7 @@ namespace NetworkSwitch
 
         public void UpdateCheckBoxStateOnSelectAdapter()
         {
-            bool isAdapterEnabled = NetworkController.isNetworkAdapterEnabled(adapters[comboBox1.SelectedIndex]);
+            bool isAdapterEnabled = NetworkController.IsNetworkAdapterEnabled(adapters[comboBox1.SelectedIndex]);
             this.UpdateCheckboxText(isAdapterEnabled);
         }
 
