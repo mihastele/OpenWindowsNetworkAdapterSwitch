@@ -82,6 +82,5 @@
         private Label label1;
         private ComboBox comboBox1;
         private CheckBox checkBox1;
-        private Button button1;
     }
 }
